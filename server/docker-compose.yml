@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  database:
+    image: mongo
+    container_name: 'pa-mongo'
+    restart: always
+    env_file:
+      - .env  
+    environment:
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - mongodb_data_container:/data/db  
+
+volumes:
+  mongodb_data_container:  

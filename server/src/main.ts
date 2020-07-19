@@ -1,3 +1,5 @@
+require('dotenv').config(); // eslint-disable-line
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
