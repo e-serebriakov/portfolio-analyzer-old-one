@@ -2,10 +2,9 @@ import {
   Body, Controller, Get, Param, Patch, Put, Delete,
 } from '@nestjs/common';
 
-import { CreatePortfolioDto } from './dto/create.dto';
+import { CreatePortfolioDto, AddOperationDto, UpdatePortfolioDto } from './dto';
 import { PortfolioService } from './service';
 import { Portfolio } from './types';
-import { UpdatePortfolioDto } from './dto/update.dto';
 
 @Controller('Portfolios')
 export class PortfolioController {
@@ -14,6 +13,14 @@ export class PortfolioController {
   @Put()
   async create(@Body() createPortfolioDto: CreatePortfolioDto) {
     return this.portfolioService.create(createPortfolioDto);
+  }
+
+  @Put(':id/operations')
+  async addOperation(
+    @Param('id') id: string,  
+    @Body() addOperationDto: AddOperationDto,
+  ) {
+    return this.portfolioService.addOperation(id, addOperationDto);
   }
 
   @Get()
