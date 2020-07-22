@@ -8,6 +8,7 @@ import {
 
 import { PortfolioListPage } from './pages/portfolio/portfolioListPage/PortfolioListPage';
 import { PortfolioPage } from './pages/portfolio/portfolioPage/PortfolioPage';
+import { HistoryPage } from './pages/history/historyPage/HistoryPage';
 import { PageLayout } from './pages/PageLayout';
 import './App.css';
 
@@ -17,7 +18,7 @@ function App() {
       <PageLayout>
         <Switch>
           <Route exact path="/">
-            <Redirect to="/portfolioList" /> 
+            <Redirect to="/portfolioList" />
           </Route>
 
           <Route exact path="/portfolioList">
@@ -26,6 +27,10 @@ function App() {
 
           <Route path="/portfolioList/:id">
             <PortfolioPage />
+          </Route>
+
+          <Route path="/operationHistory">
+            <HistoryPage />
           </Route>
         </Switch>
 

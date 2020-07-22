@@ -1,23 +1,21 @@
 import * as React from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Link } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
 import {
   UserOutlined,
+  DatabaseOutlined,
 } from '@ant-design/icons';
 
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 type Props = {
   children: React.ReactChildren | React.ReactChild;
 }
 
 const PageLayout = ({ children }: Props) => {
-  const [isNavCollapsed, setIsNavCollapsed] = React.useState(false);
-  let location = useLocation();
-  let params = useParams();
-
-  console.log('location', location);
-  console.log('params', params);
+  const [isNavCollapsed, setIsNavCollapsed] = React.useState(true);
+  // let location = useLocation();
+  // let params = useParams();
 
   const handleToggleIconClick = () => {
     setIsNavCollapsed((prevState) => !prevState);
@@ -30,6 +28,10 @@ const PageLayout = ({ children }: Props) => {
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1" icon={<UserOutlined />}>
             <Link to="/portfolioList">Portfolio list</Link>
+          </Menu.Item>
+
+          <Menu.Item key="2" icon={<DatabaseOutlined />}>
+            <Link to="/operationHistory">Operations history</Link>
           </Menu.Item>
           {/* <Menu.Item key="2" icon={<VideoCameraOutlined />}>
             nav 2

@@ -1,14 +1,14 @@
 import * as mongoose from 'mongoose';
 
-export const PortfolioSchema = new mongoose.Schema({
+import { OperationSchema } from './operation.schema';
+
+const PortfolioSchema = new mongoose.Schema({
   name: String,
-  operations: [{
-    name: {
-      type: String,
-    },
-    date: {
-      type: Date,
-      default: new Date(),
-    }
-  }],
+  operations: [OperationSchema],
+}, {
+  toJSON: {
+    virtuals: true
+  }
 });
+
+export { PortfolioSchema };

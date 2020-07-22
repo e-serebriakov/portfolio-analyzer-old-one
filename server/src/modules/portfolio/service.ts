@@ -20,7 +20,7 @@ export class PortfolioService {
   }
 
   async update(id: string, updatePortfolioDto: UpdatePortfolioDto): Promise<Portfolio> {
-    return this.portfolioModel.findByIdAndUpdate(id, updatePortfolioDto);
+    return this.portfolioModel.findByIdAndUpdate(id, updatePortfolioDto, { new: true });
   }
 
   async delete(id: string): Promise<Portfolio> {
@@ -28,7 +28,7 @@ export class PortfolioService {
   }
 
   async findAll(): Promise<Portfolio[]> {
-    return this.portfolioModel.find().exec();
+    return this.portfolioModel.find();
   }
 
   async findOne(id: string): Promise<Portfolio> {
