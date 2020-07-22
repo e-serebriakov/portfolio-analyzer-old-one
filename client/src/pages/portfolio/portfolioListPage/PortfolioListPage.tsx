@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useRequest } from 'src/lib/hooks/useRequest';
 
 type Portfolio = {
-  _id: string;
+  id: string;
   name: string,
   operations: string[];
 }
@@ -28,7 +28,7 @@ const PortfolioListPage = () => {
         renderItem={item => (
           <List.Item>
             <List.Item.Meta
-              title={<Link to={`portfolioList/${item._id}`}>{item.name}</Link>}
+              title={<Link to={`portfolioList/${item.id}`}>{item.name}</Link>}
               description="Lorem ipsum"
             />
           </List.Item>

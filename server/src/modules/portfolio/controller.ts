@@ -1,10 +1,21 @@
 import {
-  Body, Controller, Get, Param, Patch, Put, Delete,
+  Get,
+  Put,
+  Body,
+  Query,
+  Param,
+  Patch,
+  Delete,
+  Controller,
+  ParseArrayPipe,
+  DefaultValuePipe,
 } from '@nestjs/common';
 
 import { CreatePortfolioDto, AddOperationDto, UpdatePortfolioDto } from './dto';
 import { PortfolioService } from './service';
 import { Portfolio } from './types';
+
+export type Fields = 'id' | 'name' | 'operations';
 
 @Controller('Portfolios')
 export class PortfolioController {
@@ -24,8 +35,14 @@ export class PortfolioController {
   }
 
   @Get()
-  async findAll(): Promise<Portfolio[]> {
-    return this.portfolioService.findAll();
+  async findAll(
+    @Query('fields', new DefaultValuePipe([]), ParseArrayPipe) fields: Fields[],
+    @Query('filter') filter: object = {}
+  ): Promise<Portfolio[]> {
+    return this.portfolioService.findAll({
+      filter,
+      fields,
+    });
   }
 
   @Get(':id')
