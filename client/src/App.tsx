@@ -32,6 +32,10 @@ function App() {
           <Route path="/operationHistory">
             <HistoryPage />
           </Route>
+
+          <Route path="/settings">
+            <SettingsPage />
+          </Route>
         </Switch>
 
       </PageLayout>
