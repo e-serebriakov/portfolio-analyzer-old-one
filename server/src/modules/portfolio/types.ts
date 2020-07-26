@@ -1,12 +1,10 @@
 import { Document } from 'mongoose';
 
-export enum OperationType {
-  CashDeposit = 'CASH_DEPOSIT',
-  CashWithdrawal = 'CASH_WITHDRAWAL',
-  SecurityBuying = 'SECURITY_BUYING',
-  SecuritySelling = 'SECURITY_SELLING',
+export type Portfolio = {
+  name: string;
 }
 
+<<<<<<< HEAD
 export enum OperationCurrency {
   Rub = 'RUB',
   Usd = 'UDS',
@@ -27,3 +25,6 @@ export interface Portfolio extends Document {
   readonly name: string;
   readonly operations: Operation[];
 }
+=======
+export type PortfolioDocument = Document & Portfolio;
+>>>>>>> 2317037... [WIP]

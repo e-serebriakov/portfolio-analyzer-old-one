@@ -1,14 +1,13 @@
 import * as mongoose from 'mongoose';
 
-import { OperationSchema } from './operation.schema';
+import { PortfolioDocument } from '../types';
 
-const PortfolioSchema = new mongoose.Schema({
+const PortfolioSchema = new mongoose.Schema<PortfolioDocument>({
   name: String,
-  operations: [OperationSchema],
-}, {
-  toJSON: {
-    virtuals: true
-  }
+  operations: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Operation',
+  }],
 });
 
 export { PortfolioSchema };
