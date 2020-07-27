@@ -4,7 +4,7 @@ export const databaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
     useFactory: (): Promise<typeof mongoose> => {
-      mongoose.set('useFindAndModify', false)
+      mongoose.set('useFindAndModify', false);
 
       const connection = mongoose
         .connect(`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`, {
@@ -12,8 +12,8 @@ export const databaseProviders = [
           pass: process.env.DB_PASSWORD,
         });
 
-        return connection;
+      return connection;
     }
-      ,
+    ,
   },
 ];

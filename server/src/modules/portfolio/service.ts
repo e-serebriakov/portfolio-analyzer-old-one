@@ -14,6 +14,7 @@ export class PortfolioService {
   ) {}
 
   async create(createPortfolioDto: CreatePortfolioDto): Promise<Portfolio> {
+    // eslint-disable-next-line new-cap
     const createdPortfolio = new this.portfolioModel({ ...createPortfolioDto, operations: [] });
 
     return createdPortfolio.save();
@@ -22,7 +23,7 @@ export class PortfolioService {
   async update(id: string, updatePortfolioDto: UpdatePortfolioDto): Promise<Portfolio> {
     return this.portfolioModel.findByIdAndUpdate(id, updatePortfolioDto);
   }
-  
+
   async delete(id: string): Promise<Portfolio> {
     return this.portfolioModel.findByIdAndDelete(id);
   }

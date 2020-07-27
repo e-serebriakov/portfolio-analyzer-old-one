@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Param, Patch, Put, Delete } from '@nestjs/common';
+import {
+  Body, Controller, Get, Param, Patch, Put, Delete,
+} from '@nestjs/common';
 
 import { CreatePortfolioDto } from './dto/create.dto';
 import { PortfolioService } from './service';
@@ -27,7 +29,7 @@ export class PortfolioController {
   @Patch(':id')
   async update(
     @Param('id') id: string,
-    @Body() updatePortfolioDto: UpdatePortfolioDto
+      @Body() updatePortfolioDto: UpdatePortfolioDto,
   ): Promise<Portfolio> {
     return this.portfolioService.update(id, updatePortfolioDto);
   }
