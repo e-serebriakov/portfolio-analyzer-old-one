@@ -50,14 +50,12 @@ type Props = {
   data: Operation[];
 }
 
-const OperationListTable = ({ data }: Props) => {
-  return (
-    <Table
-      columns={columns}
-      dataSource={data}
-      pagination={false}
-    />
-  );
-}
+const OperationListTable = ({ data }: Props) => (
+  <Table
+    columns={columns}
+    dataSource={data}
+    pagination={false}
+  />
+);
 
 export { OperationListTable };

@@ -30,7 +30,7 @@ export class PortfolioController {
   @Get()
   async findAll(
     @Query('fields', new DefaultValuePipe([]), ParseArrayPipe) fields: Fields,
-    @Query('filter') filter: Filters = {}
+      @Query('filter') filter: Filters = {},
   ): Promise<Portfolio[]> {
     return this.portfolioService.findAll({
       filter,
@@ -46,7 +46,7 @@ export class PortfolioController {
   @Patch(':id')
   async update(
     @Param('id') id: string,
-    @Body() updatePortfolioDto: UpdatePortfolioDto
+      @Body() updatePortfolioDto: UpdatePortfolioDto,
   ): Promise<Portfolio | null> {
     return this.portfolioService.update(id, updatePortfolioDto);
   }

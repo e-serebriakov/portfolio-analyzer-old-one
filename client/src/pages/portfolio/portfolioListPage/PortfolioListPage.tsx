@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { List, PageHeader } from 'antd';
 import { Link } from 'react-router-dom';
+import { List, PageHeader } from 'antd';
 
 import { useRequest } from 'src/lib/hooks/useRequest';
 
@@ -25,7 +25,7 @@ const PortfolioListPage = () => {
       <List
         itemLayout="horizontal"
         dataSource={data}
-        renderItem={item => (
+        renderItem={(item) => (
           <List.Item>
             <List.Item.Meta
               title={<Link to={`portfolioList/${item.id}`}>{item.name}</Link>}
@@ -35,7 +35,7 @@ const PortfolioListPage = () => {
         )}
       />
     </>
-  )
-}
+  );
+};
 
 export { PortfolioListPage };

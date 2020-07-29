@@ -11,9 +11,9 @@ enum ActionType {
   FETCH_INIT = 'FETCH_INIT',
   FETCH_SUCCESS = 'FETCH_SUCCESS',
   FETCH_FAILURE = 'FETCH_FAILURE',
-};
+}
 
-type Action<E, T> = 
+type Action<E, T> =
 | { type: ActionType.FETCH_INIT }
 | { type: ActionType.FETCH_SUCCESS, payload: T }
 | { type: ActionType.FETCH_FAILURE, payload: E };
@@ -26,7 +26,7 @@ const dataFetchReducer = <E, T>(state: State<E, T>, action: Action<E, T>): State
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
     case ActionType.FETCH_SUCCESS:
       return {
@@ -57,11 +57,11 @@ export const useRequest = <T>(options: AxiosRequestConfig, initialData: T): [Sta
 
     const fetchData = async () => {
       dispatch({ type: ActionType.FETCH_INIT });
- 
+
       try {
         const response = await axios.request<T>({
           baseURL: `${process.env.REACT_APP_SERVER_HOST}:${process.env.REACT_APP_SERVER_PORT}`,
-          ...options
+          ...options,
         });
 
         if (!didCancel) {
@@ -82,4 +82,4 @@ export const useRequest = <T>(options: AxiosRequestConfig, initialData: T): [Sta
   }, []);
 
   return [state];
-}
+};

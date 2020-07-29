@@ -35,16 +35,16 @@ const OperationSchema = new mongoose.Schema<OperationDocument>({
   date: {
     type: Date,
     default: new Date(),
-  }
+  },
 }, {
   toJSON: {
-    virtuals: true
-  }
+    virtuals: true,
+  },
 });
 
 OperationSchema.virtual('totalPrice')
-  .get(function(this: OperationDocument): number {
+  .get(function (this: OperationDocument): number {
     return (this.price + this.quantity) + this.fee;
-  })
+  });
 
 export { OperationSchema };

@@ -30,7 +30,7 @@ export class OperationController {
   @Get()
   async findAll(
     @Query('fields', new DefaultValuePipe([]), ParseArrayPipe) fields: Fields,
-    @Query('filter') filter: Filters = {}
+      @Query('filter') filter: Filters = {},
   ): Promise<Operation[]> {
     return this.operationService.findAll({
       filter,
@@ -46,7 +46,7 @@ export class OperationController {
   @Patch(':id')
   async update(
     @Param('id') id: string,
-    @Body() updateOperationDto: UpdateOperationDto
+      @Body() updateOperationDto: UpdateOperationDto,
   ): Promise<Operation | null> {
     return this.operationService.update(id, updateOperationDto);
   }

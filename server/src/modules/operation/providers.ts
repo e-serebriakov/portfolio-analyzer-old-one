@@ -1,6 +1,6 @@
 import { Connection } from 'mongoose';
-
 import { DATABASE_CONNECTION } from 'src/constants';
+
 import { OperationSchema } from './schemas/operation.schema';
 import { OPERATION_MODEL } from './constants';
 

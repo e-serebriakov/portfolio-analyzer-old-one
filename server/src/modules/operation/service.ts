@@ -19,7 +19,11 @@ export class OperationService {
   async create(createOperationDto: CreateOperationDto): Promise<Operation> {
     const { portfolioId, ...restFields } = createOperationDto;
 
-    const createdOperation = new this.operationModel({ ...restFields, portfolio: Types.ObjectId(portfolioId) });
+    // eslint-disable-next-line new-cap
+    const createdOperation = new this.operationModel({
+      ...restFields,
+      portfolio: Types.ObjectId(portfolioId),
+    });
     const saved = await createdOperation.save();
 
     return saved.populate('portfolio').execPopulate();
@@ -28,7 +32,7 @@ export class OperationService {
   async update(id: string, updateOperationDto: UpdateOperationDto): Promise<Operation | null> {
     return this.operationModel.findByIdAndUpdate(id, updateOperationDto, { new: true });
   }
-  
+
   async delete(id: string): Promise<Operation | null> {
     return this.operationModel.findByIdAndDelete(id);
   }
@@ -39,13 +43,13 @@ export class OperationService {
   }: { filter: Filters, fields: Fields }): Promise<Operation[]> {
     const selectOptions = fields.length > 0 ? fields.reduce((acc, field) => ({
       ...acc,
-      [field]: 1
+      [field]: 1,
     }), {}) : {};
 
     return this.operationModel
       .find(filter)
       .populate('portfolio')
-      .select(selectOptions)
+      .select(selectOptions);
   }
 
   async findOne(id: string): Promise<Operation | null> {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PageHeader } from 'antd';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 import { useRequest } from 'src/lib/hooks/useRequest';
 import { OperationListTable } from './operationListTable/OperationListTable';
@@ -53,7 +53,7 @@ const PortfolioPage = () => {
 
       <OperationListTable data={data.operations} />
     </>
-  )
-}
+  );
+};
 
 export { PortfolioPage };

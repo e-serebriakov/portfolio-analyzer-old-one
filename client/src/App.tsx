@@ -34,7 +34,7 @@ function App() {
           </Route>
 
           <Route path="/settings">
-            <SettingsPage />
+            {/* <SettingsPage /> */}
           </Route>
         </Switch>
 

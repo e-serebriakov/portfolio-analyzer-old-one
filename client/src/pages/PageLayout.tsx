@@ -19,7 +19,7 @@ const PageLayout = ({ children }: Props) => {
 
   const handleToggleIconClick = () => {
     setIsNavCollapsed((prevState) => !prevState);
-  }
+  };
 
   return (
     <Layout>
@@ -61,7 +61,7 @@ const PageLayout = ({ children }: Props) => {
         </Content>
       </Layout>
     </Layout>
-  )
+  );
 };
 
 export { PageLayout };

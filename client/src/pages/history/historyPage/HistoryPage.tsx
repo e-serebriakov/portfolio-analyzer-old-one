@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-const HistoryPage = () => {
-  return (
-    <div />
-  )
-}
+const HistoryPage = () => (
+  <div />
+);
 
 export { HistoryPage };

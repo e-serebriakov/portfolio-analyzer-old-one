@@ -1,4 +1,5 @@
 import { Document } from 'mongoose';
+
 import { Portfolio } from '../portfolio/types';
 
 export enum OperationType {
@@ -23,6 +24,6 @@ export type Operation = {
   date: Date;
   totalPrice: number;
   portfolio?: Portfolio;
-}
+};
 
 export type OperationDocument = Document & Operation;
