@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 
-export interface Portfolio extends Document {
-  readonly name: string;
-  readonly operations: string[];
-}
+export type Portfolio = {
+  name: string;
+};
+
+export type PortfolioDocument = Document & Portfolio;

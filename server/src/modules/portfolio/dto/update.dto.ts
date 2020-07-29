@@ -1,3 +1,3 @@
 export class UpdatePortfolioDto {
-  readonly name: string;
+  readonly name!: string;
 }

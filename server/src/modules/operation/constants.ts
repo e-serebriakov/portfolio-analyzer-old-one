@@ -1,0 +1,1 @@
+export const OPERATION_MODEL = 'OPERATION_MODEL';

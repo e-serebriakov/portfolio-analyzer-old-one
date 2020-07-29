@@ -1,6 +1,6 @@
 import { Connection } from 'mongoose';
-
 import { DATABASE_CONNECTION } from 'src/constants';
+
 import { PortfolioSchema } from './schemas/portfolio.schema';
 import { PORTFOLIO_MODEL } from './constants';
 

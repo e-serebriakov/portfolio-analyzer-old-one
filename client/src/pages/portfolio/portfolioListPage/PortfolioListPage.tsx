@@ -1,0 +1,41 @@
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { List, PageHeader } from 'antd';
+
+import { useRequest } from 'src/lib/hooks/useRequest';
+
+type Portfolio = {
+  id: string;
+  name: string,
+  operations: string[];
+}
+
+const PortfolioListPage = () => {
+  const [{ data, error }] = useRequest<Portfolio[]>({
+    method: 'get',
+    url: '/portfolios',
+  }, []);
+
+  return (
+    <>
+      <PageHeader
+        title="Portfolio list"
+      />
+      { error && <p>{error}</p>}
+      <List
+        itemLayout="horizontal"
+        dataSource={data}
+        renderItem={(item) => (
+          <List.Item>
+            <List.Item.Meta
+              title={<Link to={`portfolioList/${item.id}`}>{item.name}</Link>}
+              description="Lorem ipsum"
+            />
+          </List.Item>
+        )}
+      />
+    </>
+  );
+};
+
+export { PortfolioListPage };

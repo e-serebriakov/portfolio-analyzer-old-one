@@ -1,6 +1,13 @@
 import * as mongoose from 'mongoose';
 
-export const PortfolioSchema = new mongoose.Schema({
+import { PortfolioDocument } from '../types';
+
+const PortfolioSchema = new mongoose.Schema<PortfolioDocument>({
   name: String,
-  operations: [String],
+  operations: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Operation',
+  }],
 });
+
+export { PortfolioSchema };

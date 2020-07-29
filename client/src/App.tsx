@@ -1,29 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
+
+import { PortfolioListPage } from './pages/portfolio/portfolioListPage/PortfolioListPage';
+import { PortfolioPage } from './pages/portfolio/portfolioPage/PortfolioPage';
+import { HistoryPage } from './pages/history/historyPage/HistoryPage';
+import { PageLayout } from './pages/PageLayout';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.tsx</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <PageLayout>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/portfolioList" />
+          </Route>
+
+          <Route exact path="/portfolioList">
+            <PortfolioListPage />
+          </Route>
+
+          <Route path="/portfolioList/:id">
+            <PortfolioPage />
+          </Route>
+
+          <Route path="/operationHistory">
+            <HistoryPage />
+          </Route>
+
+          <Route path="/settings">
+            {/* <SettingsPage /> */}
+          </Route>
+        </Switch>
+
+      </PageLayout>
+    </Router>
   );
 }
 
